@@ -1,48 +1,37 @@
 # git-label-packages
 > Default label packages for [git-label](https://github.com/jasonbellamy/git-label)
 
+Set of reusable Github labels for Bitrock OSS projects, based on the ["Sane Github labeling" principle](https://medium.com/@dave_lunny/sane-github-labels-c5d2e6004b63).
 
-## Getting Started
+The `bitrock.json` file is simply a merge for the [priority](packages/priority.json), [status](packages/status.json) and [type](packages/type.json) labels schema.
 
-- Install with [NPM](https://www.npmjs.org/) - `npm install --save git-label-packages`
-
-
-## Usage
-
-A bunch of default packages are provided to get you started:
-
-- [cla](packages/cla.json)
-- [default](packages/default.json) - *default github labels*
-- [priority](packages/priority.json)
-- [status](packages/status.json)
-- [type](packages/type.json)
-
-You can use these packages with both [git-label](https://github.com/jasonbellamy/git-label) and [git-label-cli](https://github.com/jasonbellamy/git-label-cli).
-
-
-## Developing
-
-If you want to use your own custom labels, you can easily create your own package file(s). 
-
-Packages are just simple JSON arrays that contain an object with a name and hexidecimal color property for each label:
-
-```json
-[
-  { "name": "bug", "color": "#fc2929" },
-  { "name": "duplicate", "color": "#cccccc" },
-  { "name": "enhancement", "color": "#84b6eb" },
-  { "name": "help wanted", "color": "#159818" },
-  { "name": "invalid", "color": "#e6e6e6" },
-  { "name": "question", "color": "#cc317c" },
-  { "name": "wontfix", "color": "#ffffff" }
-]
+## How to use
+Install `git-labelmaker` CLI utility
+```bash
+$ npm install -g git-labelmaker
+-- ora --
+$ yarn global add git-labelmaker
 ```
 
+Clone this repo inside your project, ideally in a git-ignored folder since this operation is a one-shot
 
-## Related
+```bash
+$ git clone https://github.com/bitrockteam/git-label-packages ./node_modules
+```
 
-- [git-label](https://github.com/jasonbellamy/git-label) - API
-- [git-label-cli](https://github.com/jasonbellamy/git-label-cli) - CLI
+Follows [instruction on git-labelmaker repo](https://github.com/himynameisdave/git-labelmaker#token) for first time setup, then execute it on a project repo:
+
+```bash
+$ git-labelmaker
+```
+
+To avoid confusion, first select `Remove labels` to delete the default Github ones, then relauch git-labelmaker and now select `Add Labels From Packge` and insert the label schema path:
+
+```
+./node_modules/git-label-packages/bitrock.json
+```
+
+You're done!
 
 
 ## Contributing
@@ -50,5 +39,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 
 ## License
-Copyright (c) 2016 [Jason Bellamy ](http://jasonbellamy.com)  
+Copyright (c) 2018 Bitrock UI Engineering Team & [Jason Bellamy ](http://jasonbellamy.com)  
 Licensed under the MIT license.
